@@ -22,7 +22,7 @@ public class MyWriter
    
     static void run()
     {
-        final long c = 5*1000000;
+        final long c = 1*1000000;
         
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(new File(filename))))
         {

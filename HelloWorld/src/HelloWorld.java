@@ -9,55 +9,39 @@ public class HelloWorld
 
     public static void main(String[] args)
     {
-        System.out.println("Hello World");
-        run();
+        run(new CsvSplitter());
+        run(new TokenSplitter());
     }
 
-    static String f(String line)
+    static public void run(LineProcessor lp)
     {
-        StringTokenizer st = new StringTokenizer(line, ",");
-        String s = null;
-        while(st.hasMoreTokens())
-        {
-            s = st.nextToken();
-        }
-        return s;
-    }
-
-    static public void run(LineProcessor lp) {
+        System.out.println(lp.getClass().getName() + " started.");
         
         String csvFile = "c:/temp/log.txt";
-        BufferedReader br = null;
-        String line = "";
-        String cvsSplitBy = ",";
-     
-        try {
-     
-            br = new BufferedReader(new FileReader(csvFile));
+
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFile)))
+        {
+            String line = "";
             long startTime = System.currentTimeMillis();
-            while ((line = br.readLine()) != null) 
+            while ((line = br.readLine()) != null)
             {
                 lp.processLine(line);
             }
             long endTime = System.currentTimeMillis();
-            System.out.println("That took " + (endTime - startTime) + " milliseconds");
-     
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            System.out.println(lp.getClass().getName() + " took " + (endTime - startTime)
+                    + " milliseconds");
+
         }
-     
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
         System.out.println("Done");
-      }
-    
-    
+    }
+
 }
