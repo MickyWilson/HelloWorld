@@ -3,11 +3,16 @@ public class CsvSplitter implements
         LineProcessor
 {
 
+    boolean done = false;
     @Override
     public void processLine(String line)
     {
-        @SuppressWarnings("unused")
-        String [] result = line.split(",",7);
+        String [] result = line.split(",",8);
+        if(!done)
+        {
+            done = true;
+            Utils.print(result);
+        }
     }
 
 }

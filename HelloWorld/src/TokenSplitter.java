@@ -20,8 +20,7 @@ public class TokenSplitter implements
         if(!done)
         {
             done = true;
-            for(int j = 0; j != result.length; ++j)
-                System.out.println(j + " " + result[j]);
+            Utils.print(result);
         }
      }
 

@@ -9,6 +9,10 @@ public class HelloWorld
 
     public static void main(String[] args)
     {
+        
+        run(new CustomSplitter());
+        run(new CustomSplitter());
+        run(new CustomSplitter());
         run(new CsvSplitter());
         run(new TokenSplitter());
     }
