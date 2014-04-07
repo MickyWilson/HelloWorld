@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.StringTokenizer;
 
 public class HelloWorld
 {
@@ -21,7 +20,7 @@ public class HelloWorld
     {
         System.out.println(lp.getClass().getName() + " started.");
         
-        String csvFile = "c:/temp/log.txt";
+        String csvFile = MyWriter.filename;
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile)))
         {

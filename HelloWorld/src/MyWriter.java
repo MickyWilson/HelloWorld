@@ -7,7 +7,7 @@ import java.io.IOException;
 public class MyWriter
 {
 
-    static String filename = "C:\\temp\\log.txt";
+    public static String filename = "C:\\temp\\log.txt";
     public static void main(String[] args)
     {
         long startTime = System.currentTimeMillis();
