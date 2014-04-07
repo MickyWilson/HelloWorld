@@ -22,12 +22,12 @@ public class MyWriter
    
     static void run()
     {
-        final long c = 1000000;
+        final long c = 5*1000000;
         
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(new File(filename))))
         {
             for(long i = 0; i != c; ++i)
-                writer.write("1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30");
+                writer.write("1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30\n");
         }
         catch (IOException e)
         {

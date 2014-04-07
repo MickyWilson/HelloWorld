@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.StringTokenizer;
 
 public class HelloWorld
 {
@@ -9,12 +10,23 @@ public class HelloWorld
     public static void main(String[] args)
     {
         System.out.println("Hello World");
+        run();
     }
 
+    static String f(String line)
+    {
+        StringTokenizer st = new StringTokenizer(line, ",");
+        String s = null;
+        while(st.hasMoreTokens())
+        {
+            s = st.nextToken();
+        }
+        return s;
+    }
 
-    public void run() {
+    static public void run(LineProcessor lp) {
         
-        String csvFile = "/Users/mkyong/Downloads/GeoIPCountryWhois.csv";
+        String csvFile = "c:/temp/log.txt";
         BufferedReader br = null;
         String line = "";
         String cvsSplitBy = ",";
@@ -22,15 +34,13 @@ public class HelloWorld
         try {
      
             br = new BufferedReader(new FileReader(csvFile));
-            while ((line = br.readLine()) != null) {
-     
-                    // use comma as separator
-                String[] country = line.split(cvsSplitBy);
-     
-                System.out.println("Country [code= " + country[4] 
-                                     + " , name=" + country[5] + "]");
-     
+            long startTime = System.currentTimeMillis();
+            while ((line = br.readLine()) != null) 
+            {
+                lp.processLine(line);
             }
+            long endTime = System.currentTimeMillis();
+            System.out.println("That took " + (endTime - startTime) + " milliseconds");
      
         } catch (FileNotFoundException e) {
             e.printStackTrace();
