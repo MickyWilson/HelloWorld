@@ -10,10 +10,12 @@ public class LineProcessorExample
     {
         
         run(new CustomSplitter());
+        
         run(new CustomSplitter());
         run(new CustomSplitter());
         run(new CsvSplitter());
         run(new TokenSplitter());
+        run(new RegexSplitter());
     }
 
     static public void run(LineProcessor lp)
