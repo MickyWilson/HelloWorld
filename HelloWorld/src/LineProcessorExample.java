@@ -9,13 +9,14 @@ public class LineProcessorExample
     public static void main(String[] args)
     {
         
+        run(new NullReader());
         run(new CustomSplitter());
         
-        run(new CustomSplitter());
-        run(new CustomSplitter());
         run(new CsvSplitter());
+        run(new NullReader());
         run(new TokenSplitter());
         run(new RegexSplitter());
+        run(new NullReader());
     }
 
     static public void run(LineProcessor lp)
@@ -27,14 +28,16 @@ public class LineProcessorExample
         try (BufferedReader br = new BufferedReader(new FileReader(csvFile)))
         {
             String line = "";
+            int i = 0;
             long startTime = System.currentTimeMillis();
             while ((line = br.readLine()) != null)
             {
+                ++i;
                 lp.processLine(line);
             }
             long endTime = System.currentTimeMillis();
-            System.out.println(lp.getClass().getName() + " took " + (endTime - startTime)
-                    + " milliseconds");
+            System.out.println(lp.getClass().getName() + " " + i + " took " + (endTime - startTime)/1000.0
+                    + "s");
 
         }
         catch (FileNotFoundException e)
