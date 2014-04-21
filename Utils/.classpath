@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JCOMMANDER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/LOG4J"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JMXTOOLS"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/WINRUN4J"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JMX"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
