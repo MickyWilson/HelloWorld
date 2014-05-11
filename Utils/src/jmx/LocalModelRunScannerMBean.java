@@ -8,6 +8,7 @@ public interface LocalModelRunScannerMBean extends ModelRunScannerMBean
 	void stopScanning();
 	void setDirectory(String directory);
 	String getDirectory();
-	String getStatus();
-
+    void setDirectories(String [] directories);
+    String [] getDirectories();
+    String getStatus();
 }

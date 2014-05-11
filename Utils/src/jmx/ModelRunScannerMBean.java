@@ -12,5 +12,7 @@ public interface ModelRunScannerMBean
 	String getStatus() throws IOException;	
 	int getNumberOfRuns() throws IOException;
 	int getNumberOfRunsCompleted() throws IOException;
-	
+
+    String [] getDirectories() throws IOException;
+    void setDirectories(String [] directories) throws IOException;
 }

@@ -114,4 +114,18 @@ public class ModelRunScanner implements LocalModelRunScannerMBean, RunWatcherLis
 		stopScanning();
     }
 
+    @Override
+    public void setDirectories(String[] directories)
+    {
+    }
+
+    @Override
+    public String[] getDirectories()
+    {
+        String a [] = new String[2];
+        a[0] = "one";
+        a[1] = "two";
+        return a;
+    }
+
 }
