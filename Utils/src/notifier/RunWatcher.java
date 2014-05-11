@@ -29,7 +29,7 @@ public class RunWatcher implements PathListener
 
 	public RunWatcher(Path runDirectory, RunWatcherListener listener) throws IOException
 	{
-		logger.debug("Created run watcher for " + runDirectory);
+	    logger.debug("Created run watcher for " + runDirectory);
 		this.rootDirectory = runDirectory;
 		this.watchDir = new WatchDir(this);
 		this.listener = listener;
@@ -90,7 +90,7 @@ public class RunWatcher implements PathListener
 		
 		if (numControlFiles == numSummaryFiles)
 		{
-			listener.ready();
+			listener.ready(rootDirectory);
 		}
     }
 
@@ -112,17 +112,5 @@ public class RunWatcher implements PathListener
 	{
 		watchDir.stop();
 	}
-	
-//	static public void main(String args[]) throws IOException, InterruptedException, ExecutionException
-//	{
-//		logger.info("Starting RunWatcher.Main");
-//		RunWatcher rw = new RunWatcher(Paths.get("c:\\temp"));
-//		ExecutorService executor = Executors.newFixedThreadPool(1);
-//		//Future<?> f = executor.submit(rw);
-//		//f.get();
-//		executor.shutdownNow();
-//		logger.info("Finished Main");
-//		
-//	}
-	
+		
 }

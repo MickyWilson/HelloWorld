@@ -1,5 +1,6 @@
 package jmx;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import notifier.RunWatcher;
@@ -103,8 +104,12 @@ public class ModelRunScanner implements LocalModelRunScannerMBean, RunWatcherLis
     }
 
 	@Override
-    public void ready()
+    public void ready(Path rootDirectory)
     {
+	    if (rootDirectory.equals(directory))
+	    {
+	        logger.error("Root directory != directory\n" + rootDirectory + "\n" + directory);
+	    }
 		logger.info("ready: " + directory);
 		stopScanning();
     }

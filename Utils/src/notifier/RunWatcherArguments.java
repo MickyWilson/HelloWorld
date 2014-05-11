@@ -1,13 +1,10 @@
-package directoryWatcher;
-
-import java.util.ArrayList;
-import java.util.List;
+package notifier;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 
-public class WatchDirArguments 
+public class RunWatcherArguments 
 {
     @Parameter(names = {"-h", "?", "--help"}, help = true, 
     		description = "Display this help")
@@ -17,13 +14,17 @@ public class WatchDirArguments
             description = "Log4j properties file")
     public String log4j = "log4j.properties";
     
-    @Parameter(names = {"-d", "--directories"}, required = true, variableArity = true,
-    		description = "List of one or more directories to watch ")
-    public List<String> directories = new ArrayList<String>();
+    @Parameter(names = {"-d", "--directory"}, required = true,
+    		description = "Run directory to watch ")
+    public String directory;
 
-    static WatchDirArguments create(String strArgs[], String appName)
+    @Parameter(names = {"-b", "--batch"}, required = false, 
+            description = "Batch file to execute")
+    public String batchFile = null;
+
+    static RunWatcherArguments create(String strArgs[], String appName)
     {
-		WatchDirArguments args = new WatchDirArguments();
+		RunWatcherArguments args = new RunWatcherArguments();
 		JCommander commander = new JCommander(args);
 		commander.setAllowAbbreviatedOptions(true);
 		commander.setCaseSensitiveOptions(false);

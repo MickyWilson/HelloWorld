@@ -27,13 +27,14 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 /**
  * Example to watch a directory (or tree) for changes to files.
  */
 
 public class WatchDir implements Runnable
 {
-	static String appName = new Object(){}.getClass().getEnclosingClass().getName();	
+    static String appName = new Object(){}.getClass().getEnclosingClass().getName();	
 	private static final Logger logger = Logger.getLogger(WatchDir.class);
 
 	private final WatchService	      watcher;
@@ -173,6 +174,7 @@ public class WatchDir implements Runnable
 	 */
 	private void registerAll(final Path start)
 	{
+	    logger.info("RegisterAll:"+ start);
 		// register directory and sub-directories
         try
         {
@@ -234,7 +236,6 @@ public class WatchDir implements Runnable
 
 				// print out event
 				logger.debug(String.format("%s: %s", event.kind().name(), fullPath));
-				
 				pathListener.PathEvent(fullPath, kind);
 				
 				if (isInterrupted())
@@ -274,7 +275,7 @@ public class WatchDir implements Runnable
 	{
 		return future.isCancelled();
 	}
-	
+
 	public static void main(String[] args) throws IOException, InterruptedException
 	{
 		WatchDirArguments wda = WatchDirArguments.create(args, appName);
@@ -283,6 +284,8 @@ public class WatchDir implements Runnable
 			System.exit(-1);
 		}
 
+        PropertyConfigurator.configure(wda.log4j);
+		
 		WatchDir wd = new WatchDir(new PathListener()
 		{
 			public void PathEvent(Path file, Kind<?> kind)
