@@ -38,6 +38,7 @@ public class BatchFileExecutor implements
         {
             logger.info("Executing [" + cmd + "]");
             Runtime.getRuntime().exec(cmd);
+            System.exit(0);
         }
         catch (IOException e)
         {
